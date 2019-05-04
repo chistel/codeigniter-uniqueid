@@ -13,7 +13,7 @@ composer require chistel/codeigniter-uniqueid
 
 ## Usage
 
-Your Eloquent models should use the `Chistel\CodeigniterUniqueId\HasUniqueId` trait and the `Chistel\CodeigniterUniqueId\UniqueIdOptions` class.
+Your codeigniter models should use the `Chistel\CodeigniterUniqueId\HasUniqueId` trait and the `Chistel\CodeigniterUniqueId\UniqueIdOptions` class.
 
 The trait contains an abstract method `getUniqueIdOptions()` that you must implement yourself. 
 
@@ -22,7 +22,7 @@ Here's an example of how to implement the trait:
 ```php
 <?php
 
-namespace App;
+namespace App\Models;
 
 use CodeIgniter\Model;
 use Chistel\CodeigniterUniqueId\HasUniqueId;

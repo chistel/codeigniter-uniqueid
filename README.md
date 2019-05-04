@@ -1,18 +1,19 @@
-# UniqueId is simliar to [Spatie Sluggable](https://github.com/spatie/laravel-sluggable) as it was mimicked from it.
+# codeigniter-uniqueid is same as [laravel uniqueid](https://github.com/chistel/laravel-uniqueid), but for codeigniter4.
 
-but the difference is that it's meant to use unique string for model routes.
-
+the trait is to enable you use unique id for you codeigniter route. 
+unfortunately, codeigniter4 does not use a routekey at the moment. 
+so you would not be able to pass the unique column/value via model
 
 ## Installation
 
 You can install the package via composer:
 ``` bash
-composer require chistel/uniqueid
+composer require chistel/codeigniter-uniqueid
 ```
 
 ## Usage
 
-Your Eloquent models should use the `Chistel\LaravelUniqueId\HasUniqueId` trait and the `Chistel\LaravelUniqueId\UniqueIdOptions` class.
+Your Eloquent models should use the `Chistel\CodeigniterUniqueId\HasUniqueId` trait and the `Chistel\CodeigniterUniqueId\UniqueIdOptions` class.
 
 The trait contains an abstract method `getUniqueIdOptions()` that you must implement yourself. 
 
@@ -23,23 +24,17 @@ Here's an example of how to implement the trait:
 
 namespace App;
 
-use Chistel\LaravelUniqueId\HasUniqueId;
-use Chistel\LaravelUniqueId\UniqueIdOptions;
-use Illuminate\Database\Eloquent\Model;
+use CodeIgniter\Model;
+use Chistel\CodeigniterUniqueId\HasUniqueId;
+use Chistel\CodeigniterUniqueId\UniqueIdOptions;
 
 class UserModel extends Model
 {
    use HasUniqueId;
-    
-   /**
-	 * Get the route key for the model.
-	 *
-	 * @return string
-	 */
-	public function getRouteKeyName()
-	{
-	    return 'user_unique_id';  // this is the unique key column 
-	}
+  	
+  	protected $beforeInsert = [
+		'generateUniqueId' // this is ben called from the trait
+	];
 	/**
 	* Get the options for generating model uniqueId.
 	*/

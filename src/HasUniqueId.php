@@ -1,9 +1,7 @@
 <?php
 
-namespace Chistel\LaravelUniqueId;
+namespace Chistel\CodeigniterUniqueid;
 
-use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\Model;
 trait HasUniqueId
 {
 	protected $uniqueIdOptions;
@@ -14,26 +12,22 @@ trait HasUniqueId
 	abstract public function getUniqueIdOptions(): UniqueIdOptions;
 
 
-	protected static function bootHasUniqueId()
-	{
-	  	static::creating(function (Model $model) {
-	      $model->generateUniqueId();
-	  	});
-	}
 	/**
 	* Handle adding UniqueId on model creation.
 	*/
-	protected function generateUniqueId()
+	protected function generateUniqueId($data)
 	{
 		$this->uniqueIdOptions = $this->getUniqueIdOptions();
 
-		$this->addUniqueId();
+		$data = $this->addUniqueId($data);
+
+		return $data;
 	}
 
 	/**
 	* Add the UniqueId to the model.
 	*/
-	protected function addUniqueId()
+	protected function addUniqueId($data)
 	{
 		$this->guardAgainstInvalidUniqueIdOptions();
 
@@ -41,7 +35,9 @@ trait HasUniqueId
 
 		$uniqueIdField = $this->uniqueIdOptions->uniqueIdField;
 
-		$this->$uniqueIdField = $uniqueId;
+		$data['data'][$uniqueIdField] = $uniqueId;
+
+		return $data;
 
 	}
 
@@ -50,10 +46,12 @@ trait HasUniqueId
 	*/
 	protected function makeUniqueIdUnique(): string
 	{
+		helper('text');
+
 		do {
-		   $uniqueId = Str::random($this->uniqueIdOptions->maximumLength);
-		   $checkCode = static::where($this->uniqueIdOptions->uniqueIdField, $uniqueId)->exists();
-		} while($checkCode > 0);
+	      $uniqueId = random_string('alnum',$this->uniqueIdOptions->maximumLength);
+	      $checkCode = $this->where($this->uniqueIdOptions->uniqueIdField, $uniqueId)->countAllResults();
+	   } while($checkCode > 0);
 
 		return $uniqueId;
 	}

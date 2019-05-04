@@ -1,6 +1,6 @@
 <?php
 
-namespace Chistel\LaravelUniqueId;
+namespace Chistel\CodeigniterUniqueid;
 
 use Exception;
 

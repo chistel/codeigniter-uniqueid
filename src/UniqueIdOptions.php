@@ -1,6 +1,6 @@
 <?php
 
-namespace Chistel\LaravelUniqueId;
+namespace Chistel\CodeigniterUniqueid;
 
 class UniqueIdOptions
 {
@@ -13,7 +13,7 @@ class UniqueIdOptions
 
 	/**
 	 * [create description]
-	 * @return [type]
+	 * @return [type] [description]
 	 */
 	public static function create(): self
 	{
@@ -22,8 +22,8 @@ class UniqueIdOptions
 
 	/**
 	 * [saveUniqueIdTo description]
-	 * @param  string $fieldName
-	 * @return [type]
+	 * @param  string $fieldName [description]
+	 * @return [type]            [description]
 	 */
 	public function saveUniqueIdTo(string $fieldName): self
 	{
@@ -34,8 +34,8 @@ class UniqueIdOptions
 
 	/**
 	 * [uniqueIdShouldBeNoLongerThan description]
-	 * @param  int    $maximumLength
-	 * @return [type]
+	 * @param  int    $maximumLength [description]
+	 * @return [type]                [description]
 	 */
 	public function uniqueIdShouldBeNoLongerThan(int $maximumLength): self
 	{

@@ -1,29 +1,28 @@
 {
-    "name": "chistel/laravel-uniqueid",
-    "description": "Generate uniqueid when saving Eloquent models to be used as auth key and route key",
-    "keywords": [
-        "chistel",
-        "laravel-uniqueid",
-        "laravel-unique model id"
-    ],
-    "homepage": "https://github.com/chistel/laravel-uniqueid",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Chistel Brown",
-            "email": "chistelbrown@gmail.com",
-            "role": "Developer"
-        }
-    ],
-    "minimum-stability": "dev",
-    "require": {
-        "php" : ">=7.1.3",
-        "illuminate/database": "~5.6.0|~5.7.0|~5.8.0",
-        "illuminate/support": "~5.6.0|~5.7.0|~5.8.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "Chistel\\LaravelUniqueId\\": "src/"
-        }
-    }
+	"name": "chistel/codeigniter-uniqueid",
+	"description": "Generate uniqueid when saving Eloquent models to be used as auth key and route key",
+	"keywords": [
+		"chistel",
+		"codeigniter-uniqueid",
+		"codeigniter-unique model id",
+		"codeigniter4"
+	],
+	"homepage": "https://github.com/chistel/codeigniter-uniqueid",
+	"license": "MIT",
+	"authors": [
+	  	{
+			"name": "Chistel Brown",
+			"email": "chistelbrown@gmail.com",
+			"role": "Developer"
+	  	}
+	],
+	"minimum-stability": "dev",
+	"require": {
+	  	"php" : ">=7.1.3",
+	},
+	"autoload": {
+	  	"psr-4": {
+	      "Chistel\\CodeigniterUniqueId\\": "src/"
+	  	}
+	}
 }
